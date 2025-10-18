@@ -24,7 +24,7 @@ getgenv().Config = {
             SelectedPetTypes = {}, -- Pet types to farm when SelectiveFarm is enabled
         },
         Misc = {
-            AutoNeon = false, -- Automatically make neon pets when possible
+            AutoNeon = true, -- Automatically make neon pets when possible
             AutoShowUI = false, -- (To Load the ui or not)
         },
         Performance = {
@@ -69,7 +69,7 @@ getgenv().Config = {
         },
         IdleProgression = {
             Enabled = true,
-            SelectedPets = {"halloween_2025_bat_cat"}  -- List of pet IDs to prioritize
+            SelectedPets = {"halloween_2025_bat_cat", "halloween_2025_slimingo"}  -- List of pet IDs to prioritize
         },
         Webhook = {
             Enabled = false, -- Send webhook notifications
