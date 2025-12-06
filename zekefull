@@ -1,4 +1,103 @@
-task.spawn(function()loadstring(game:HttpGet("https://raw.githubusercontent.com/sHuyGamers/BGSI/refs/heads/main/svv"))()end)
-task.delay(3,function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/HuyWWW/Script/refs/heads/main/Zeke"))()
+task.spawn(function()
+    task.wait(5)
+    setfpscap(3)
+  getgenv().Config = {
+        Dashboard = {
+            Enabled = false,
+            GroupName = "",
+        },
+        BabyFarm = true,
+        PetFarm = {
+            Enabled = true,
+            FarmEggs = false,
+            BuyEggs = false,
+            EggType = "any",
+            BuyEggType = "any",
+            MaxPets = 1,
+            FarmUntilFullGrown = false,
+            PrioritizeFriendship = false,
+            SelectiveFarm = false,
+            SelectedPetTypes = {},
+        },
+        EventFarm = {
+            AutoExchange = {
+                Enabled = true,
+            },
+        },
+        AutoNeon = { -- Auto neon 
+            Enabled = false,
+            MakeMega = false,
+        },
+        Misc = {
+            AutoShowUI = false,
+        },
+        Performance = {
+            Disable3DRendering = true,
+            ReduceGraphics = true,
+        },
+        AutoPotion = {
+            Enabled = false,
+            SelectedPets = {},
+        },
+        AutoTrade = {
+            Enabled = false,
+            AutoAcceptTrades = false,
+            SendTradesTo = "",
+            TradeMode = "all",
+            Categories = {},
+            Items = {},
+            ItemCounts = {},
+            FilterByAge = false,
+            SelectedAges = {},
+            ExcludeNeons = true,
+            ExcludeFullGrown = false
+        },
+        AutoBuy = {
+            Enabled = false,
+            SelectedItems = {},
+        },
+        AutoPay = {
+            Enabled = false,
+            TargetPlayer = "",
+        },
+        AutoOpen = {
+            Enabled = false,
+            Items = {},
+        },
+        AutoRecycle = {
+            Enabled = false,
+            RarityFilter = {
+                common = true,
+                uncommon = true,
+                rare = false,
+                ultra_rare = false,
+                legendary = false
+            },
+            KeepNeons = true,
+            KeepFullGrown = false,
+            SelectiveMode = false,
+            SelectedPets = {}
+        },
+        IdleProgression = { 
+            Enabled = true,
+            SelectedPets = {"cracked_egg"},
+            ExcludedPets = {},
+            AutoMinigame = false
+        },
+       Webhook = {
+            Enabled = false,
+            URL = "https://discord.com/api/", 
+            PetUnlock = {
+                Enabled = false,
+                URL = "https://discord.com/api/webhooks/", 
+                FilterRarities = {"legendary", "ultra_rare"} 
+            },
+        },
+        TaskExclusion = {
+            Enabled = true,
+            ExcludedTasks = {"sleepy"},
+        },
+    };
+script_key="BpAeIQZpCKUEBhmdxSIuoBfdbAWOSCrG"
+loadstring(game:HttpGet("https://zekehub.com/scripts/AdoptMe/MassFarm.lua"))()
 end)
