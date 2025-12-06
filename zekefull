@@ -98,6 +98,6 @@ task.spawn(function()
             ExcludedTasks = {"sleepy"},
         },
     };
-script_key="BpAeIQZpCKUEBhmdxSIuoBfdbAWOSCrG"
+script_key="hVcQfYscLTzomvugcRUlrLwkxiZBqiCo"
 loadstring(game:HttpGet("https://zekehub.com/scripts/AdoptMe/MassFarm.lua"))()
 end)
