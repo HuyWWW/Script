@@ -1,6 +1,6 @@
 task.spawn(function()
     task.wait(5)
-    setfpscap(2)
+    setfpscap(1)
   getgenv().Config = {
         Dashboard = {
             Enabled = false,
