@@ -40,7 +40,7 @@ task.spawn(function()
             SelectedPets = {},
         },
         AutoTrade = {
-            Enabled = true,
+            Enabled = false,
             AutoAcceptTrades = false,
             SendTradesTo = "Natali3Rippl3",
             TradeMode = "specific",
