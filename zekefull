@@ -26,7 +26,7 @@ task.spawn(function()
         },
         AutoNeon = { -- Auto neon 
             Enabled = true,
-            MakeMega = true,
+            MakeMega = false,
         },
         Misc = {
             AutoShowUI = false,
@@ -53,8 +53,8 @@ task.spawn(function()
             ExcludeFullGrown = false
         },
         AutoBuy = {
-            Enabled = false,
-            SelectedItems = {},
+            Enabled = true,
+            SelectedItems = {"winter_2025_christmas_spirit"},
         },
         AutoPay = {
             Enabled = false,
@@ -80,7 +80,7 @@ task.spawn(function()
         },
         IdleProgression = { 
             Enabled = true,
-            SelectedPets = {"winter_2025_xmas_tree_sasquatch"},
+            SelectedPets = {"winter_2025_xmas_tree_sasquatch","winter_2025_christmas_spirit"},
             ExcludedPets = {},
             AutoMinigame = false
         },
