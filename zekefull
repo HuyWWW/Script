@@ -53,7 +53,7 @@ task.spawn(function()
             ExcludeFullGrown = false
         },
         AutoBuy = {
-            Enabled = true,
+            Enabled = false,
             SelectedItems = {"winter_2025_christmas_spirit"},
         },
         AutoPay = {
