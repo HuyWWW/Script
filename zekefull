@@ -82,7 +82,7 @@ task.spawn(function()
             Enabled = true,
             SelectedPets = {"winter_2025_xmas_tree_sasquatch","winter_2025_christmas_spirit"},
             ExcludedPets = {},
-            AutoMinigame = false
+            AutoMinigame = true
         },
        Webhook = {
             Enabled = false,
