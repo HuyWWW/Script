@@ -25,7 +25,7 @@ task.spawn(function()
             },
         },
         AutoNeon = { -- Auto neon 
-            Enabled = false,
+            Enabled = true,
             MakeMega = false,
         },
         Misc = {
