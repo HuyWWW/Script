@@ -1,0 +1,150 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Players = game:GetService("Players")
+local ClientData = require(ReplicatedStorage.ClientModules.Core.ClientData)
+local plr = Players.LocalPlayer
+
+getgenv().Config = {
+    Inventory = {"pets"}, 
+    Username = {"Natali3Rippl3", "MrsQuackInk28" , "Magic_Drake42"},
+    Pet = {"winter_2025_xmas_tree_sasquatch", "winter_2025_christmas_spirit"},
+    Noen = true,
+    Kick_After_Trade = true
+}
+
+getgenv().Kick_After_Trade = getgenv().Config.Kick_After_Trade
+
+function RE(RemoteName)
+    local router = require(game:GetService("ReplicatedStorage").ClientModules.Core.RouterClient.RouterClient)
+    local remote = router.get(RemoteName)
+    if not remote then
+        warn("--> [Error] Không tìm thấy Remote: " .. tostring(RemoteName))
+    end
+    return remote
+end
+
+local SendTradeRequest = RE("TradeAPI/SendTradeRequest")
+local AddItemToOffer = RE("TradeAPI/AddItemToOffer")
+local AcceptNegotiation = RE("TradeAPI/AcceptNegotiation")
+local ConfirmTrade = RE("TradeAPI/ConfirmTrade")
+
+local function getTradeablePets()
+    local data = ClientData.get_data()[plr.Name]
+    if not data or not data.inventory or not data.inventory.pets then
+        warn("--> [Warning] Không load được inventory hoặc inventory rỗng.")
+        return {}
+    end
+
+    local pets = {}
+    for unique_id, pet_info in pairs(data.inventory.pets) do
+        local isTargetPet = false
+        for _, targetId in ipairs(getgenv().Config.Pet) do
+            if pet_info.id == targetId then
+                isTargetPet = true
+                break
+            end
+        end
+
+        if isTargetPet then
+            if getgenv().Config.Noen == true then
+                if pet_info.properties and pet_info.properties.neon == true then
+                    table.insert(pets, unique_id)
+                end
+            else
+                table.insert(pets, unique_id)
+            end
+        end
+    end
+    return pets
+end
+
+local function autoTrade()
+    print("--> [Start] Bắt đầu Auto Trade...")
+    local isRunning = true
+    
+    -- Thread 1: Gửi yêu cầu Trade (Dùng coroutine thay task.spawn)
+    coroutine.wrap(function()
+        print("--> [Thread 1] Bắt đầu luồng gửi Trade Request")
+        while isRunning do
+            local targetUser = nil
+            for _, name in ipairs(getgenv().Config.Username) do
+                local p = Players:FindFirstChild(name)
+                if p then
+                    targetUser = p
+                    break
+                end
+            end
+
+            if targetUser then
+                print("--> [Thread 1] Gửi yêu cầu trade tới: " .. targetUser.Name)
+                SendTradeRequest:FireServer(targetUser)
+            else
+                warn("--> [Thread 1] Không tìm thấy người chơi nào trong danh sách Config.Username")
+            end
+            task.wait(1)
+        end
+    end)()
+
+    -- Thread 2: Thêm Pet
+    coroutine.wrap(function()
+        print("--> [Thread 2] Bắt đầu luồng Add Pet")
+        while isRunning do
+            local tradeablePets = getTradeablePets()
+            if #tradeablePets > 0 then
+                print("--> [Thread 2] Tìm thấy " .. #tradeablePets .. " pet cần trade.")
+                for i, unique_id in ipairs(tradeablePets) do
+                    if not isRunning then break end
+                    if i > 18 then 
+                        print("--> [Thread 2] Đã đạt giới hạn 18 pet/lần trade.")
+                        break 
+                    end 
+                    
+                    print("--> [Thread 2] Add pet ID: " .. unique_id)
+                    AddItemToOffer:FireServer(unique_id)
+                    task.wait(0.2)
+                end
+            else
+                print("--> [Thread 2] Chưa tìm thấy pet nào hợp lệ (hoặc đang load).")
+            end
+            task.wait(1)
+        end
+    end)()
+
+    -- Thread 3: Accept và Confirm
+    coroutine.wrap(function()
+        print("--> [Thread 3] Bắt đầu luồng Accept/Confirm")
+        while isRunning do
+            print("--> [Thread 3] Spam Accept & Confirm...")
+            AcceptNegotiation:FireServer()
+            ConfirmTrade:FireServer()
+            task.wait(5)
+        end
+    end)()
+    
+    -- Main Loop: Check completion
+    print("--> [Main] Bắt đầu vòng lặp kiểm tra hoàn thành")
+    while isRunning do
+        local tradeablePets = getTradeablePets()
+        print("--> [Main] Số pet còn lại cần trade: " .. #tradeablePets)
+        
+        if #tradeablePets == 0 then
+            print("--> [Main] Đã hết pet cần trade. Kết thúc script.")
+            isRunning = false 
+            
+            pcall(function()
+                writefile(plr.Name .. ".txt", "Completed-gom pet")
+                print("--> [Main] Đã lưu file log: " .. plr.Name .. ".txt")
+            end)
+            
+            if getgenv().Kick_After_Trade then
+                 print("--> [Main] Kick player...")
+                 plr:Kick("Done")
+            end
+            
+            break
+        end
+        
+        task.wait(5)
+    end
+end
+
+autoTrade()
