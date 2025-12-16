@@ -25,8 +25,8 @@ task.spawn(function()
             },
         },
         AutoNeon = { -- Auto neon 
-            Enabled = false,
-            MakeMega = false,
+            Enabled = true,
+            MakeMega = true,
         },
         Misc = {
             AutoShowUI = false,
@@ -36,8 +36,8 @@ task.spawn(function()
             ReduceGraphics = true,
         },
         AutoPotion = {
-            Enabled = false,
-            SelectedPets = {},
+            Enabled = true,
+            SelectedPets = {"winter_2025_christmas_spirit"},
         },
         AutoTrade = {
             Enabled = false,
