@@ -1,0 +1,11 @@
+script_key="discord.gg/serenityhub";
+getgenv().Config = {
+    ["Buy_Batlle_Pass"] = false,
+    ["Farm_Crates"] = true,
+
+    ["Skip_Click_Play"] = false, -- for web, put it true
+
+    ["PingId_For_Godly"] = "",
+    ["Webhook"] = "",
+}
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/28e0c6e46a4616ef3a265679ab5b11c3.lua"))()
