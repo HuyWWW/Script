@@ -74,7 +74,7 @@ getgenv().Config = {
         },
         IdleProgression = {
             Enabled = true, -- Put pets in pet pen for idle leveling
-            SelectedPets = {"winter_2025_xmas_tree_sasquatch","winter_2025_christmas_spirit"}, -- Pet IDs to put in pet pen (empty = use all)
+            SelectedPets = {"winter_2025_xmas_tree_sasquatch", "winter_2025_christmas_spirit", "halloween_2025_slimingo", "winter_2025_mrs_whiskerpips", "winter_2025_old_king_coal", "winter_2025_snowball_pug"}, -- Pet IDs to put in pet pen (empty = use all)
             ExcludedPets = {}, -- Pet IDs to never put in pet pen
         },
         Webhook = {
