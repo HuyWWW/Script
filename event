@@ -51,7 +51,7 @@ getgenv().Config = {
         },
         AutoPotion = {
             Enabled = true, -- Use age potions on pets to level them up
-            SelectedPets = {"winter_2025_xmas_tree_sasquatch", "winter_2025_christmas_spirit", "halloween_2025_slimingo", "winter_2025_mrs_whiskerpips", "winter_2025_old_king_coal"}, -- Pet IDs to use potions on (empty = does nothing)
+            SelectedPets = {"winter_2025_xmas_tree_sasquatch", "winter_2025_christmas_spirit", "halloween_2025_slimingo", "winter_2025_mrs_whiskerpips", "winter_2025_old_king_coal", "winter_2025_snowball_pug"}, -- Pet IDs to use potions on (empty = does nothing)
         },
         AutoBuy = {
             Enabled = false, -- Automatically buy items from shops
