@@ -22,7 +22,7 @@ getgenv().Config = {
             },
             AutoSleighball = true, -- Automatically play sleighball minigame (does not work with baby or pet farm)
             AutoHumbug = true, -- Automatically play humbug minigame (does not work with baby or pet farm)
-            AutoStarCatch = true,
+            AutoStarCatch = true, -- Automatically play star catch minigame (does not work with baby or pet farm)
         },
         AutoTrade = {
             Enabled = false, -- Enable auto trading
@@ -40,14 +40,14 @@ getgenv().Config = {
             Enabled = true, -- Enable auto neon/mega fusion
             MakeMega = true, -- Fuse neons into mega neons
             NeonAll = true, -- Neon everything possible
-            SelectedPets = {}, -- {} when NeonAll = true, otherwise {"dog", "cat"} etc
+            SelectedPets = {"winter_2025_xmas_tree_sasquatch", "winter_2025_christmas_spirit", "halloween_2025_slimingo", "winter_2025_mrs_whiskerpips", "winter_2025_old_king_coal", "winter_2025_snowball_pug"}, -- {} when NeonAll = true, otherwise {"dog", "cat"} etc
             MaxPerType = {}, -- {} = unlimited, {dog = 2, cat = 1} = limits per pet type
         },
         Settings = {
-            AutoShowUI = false, -- Load the UI on script start (main overlay disable for less memory usage)
+            AutoShowUI = true, -- Load the UI on script start (main overlay disable for less memory usage)
             ShowOverlay = true, -- Show stats overlay (disables 3D rendering)
             ReduceGraphics = true, -- Reduce graphics quality to minimum
-            FPSCap = 1, -- FPS cap option (0 = uncapped)
+            FPSCap = 2, -- FPS cap option (0 = uncapped)
         },
         AutoPotion = {
             Enabled = true, -- Use age potions on pets to level them up
